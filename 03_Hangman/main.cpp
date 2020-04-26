@@ -1,10 +1,9 @@
-//graduation project for TLAP
 #include <iostream>
 #include <vector>
 #include <string>
 #include <set>
 #include <unordered_map>
-#include <iomanip>
+
 using std::cout; using std::endl; using std::cin;
 using std::vector; using std::string; using std::set; using std::unordered_map;
 
@@ -35,6 +34,7 @@ LengthGuess Welcome(){
 	return {WordLength,MaxGuessNum};
 }
 
+//brilliant outgoing parameter
 char Guess(int &CurrentGuessCount){	
 	cout<<"Guess the character: "<<endl;
 	char CurrentGuess;
