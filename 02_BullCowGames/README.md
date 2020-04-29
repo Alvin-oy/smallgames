@@ -3,7 +3,7 @@
 Experimenting on branches is safe.
 Keeping another copy on origin/remote is safe
 Different copies are synchronized easily.
-All files are all lastest version, up-to-date.
+All files are lastest version, up-to-date.
 
 ## Note on CheckGuessValidity
 
