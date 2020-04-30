@@ -1,6 +1,6 @@
 #include <iostream>
 
 int main() {
-    std::cout << "use a template" <<std::endl;
+    std::cout << "milestone in May " <<std::endl;
     return 0;
 }
