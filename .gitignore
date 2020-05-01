@@ -3,7 +3,7 @@
 *.workspace
 *.txt
 *.mk
-.codeliet/
+.codelite/
 Makefile
 Debug/
 
