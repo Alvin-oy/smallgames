@@ -21,7 +21,7 @@ enum class EGuessStatus {
 	OK,
 	Not_Isogram,
 	Wrong_Length,
-	Not_Lowercase
+	Not_Alphabet
 	
 };
 
@@ -32,7 +32,7 @@ private:
 	bool bGameIsWon;
 	
 	bool IsIsogram(FString) const;
-	bool IsLowercase(FString) const;
+	bool IsAlphabet(FString) const;
 public:
 	FBullCowGame ();
 	int32 GetMaxTries() const;
@@ -77,9 +77,9 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	{
 		return EGuessStatus::Not_Isogram;
 	}
-	else if (!IsLowercase(Guess)) // if the guess isn't all lowercase
+	else if (!IsAlphabet(Guess)) // if the guess isn't all lowercase
 	{
-		return EGuessStatus::Not_Lowercase;
+		return EGuessStatus::Not_Alphabet;
 	}
 	else if (Guess.length() != GetHiddenWordLength()) // if the guess length is wrong
 	{
@@ -143,11 +143,11 @@ bool FBullCowGame::IsIsogram(FString Word) const
 	return true;
 }
 
-bool FBullCowGame::IsLowercase(FString Word) const
+bool FBullCowGame::IsAlphabet(FString Word) const
 {
 	for (auto Letter : Word)
 	{
-		if (!islower(Letter)) // if not a lowercase letter
+		if (!isalpha(Letter)) // if not a lowercase letter
 		{
 			return false;
 		}

@@ -75,6 +75,11 @@ FText GetValidGuess()
 		std::cout << "Try " << CurrentTry << " of " << NewGame.GetMaxTries();
 		std::cout << ". Enter your guess: ";
 		std::getline(std::cin, Guess);
+		
+		//lower all the letters in Guess
+		for(int i = 0; i<Guess.size(); ++i){
+			Guess[i] = tolower(Guess[i]);
+		}
 
 		// check status and give feedback
 		Status = NewGame.CheckGuessValidity(Guess);
@@ -85,8 +90,8 @@ FText GetValidGuess()
 		case EGuessStatus::Not_Isogram:
 			std::cout << "Please enter a word witout repeating letters.\n\n";
 			break;
-		case EGuessStatus::Not_Lowercase:
-			std::cout << "Please enter all lowercase letters.\n\n";
+		case EGuessStatus::Not_Alphabet:
+			std::cout << "Please enter word in letters.\n\n";
 			break;
 		default:	// all the invalid guesses are filtered 
 			break;	//Status = EGuessStatus::OK; logically assume the guess is valid
