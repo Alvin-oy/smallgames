@@ -85,7 +85,8 @@ FText GetValidGuess()
 		Status = NewGame.CheckGuessValidity(Guess);
 		switch (Status) {
 		case EGuessStatus::Wrong_Length:
-			std::cout << "Please enter a " << NewGame.GetHiddenWordLength() << " letter word.\n\n";
+			std::cout << "Please enter a " 
+					<< NewGame.GetHiddenWordLength() << " letter word.\n\n";
 			break;
 		case EGuessStatus::Not_Isogram:
 			std::cout << "Please enter a word witout repeating letters.\n\n";
@@ -93,10 +94,10 @@ FText GetValidGuess()
 		case EGuessStatus::Not_Alphabet:
 			std::cout << "Please enter word in letters.\n\n";
 			break;
-		default:	// all the invalid guesses are filtered 
-			break;	//Status = EGuessStatus::OK; logically assume the guess is valid
-		}
-	} while (Status != EGuessStatus::OK); // keep looping until we get no errors
+		default:		// all the invalid guesses are filtered 
+			break;	// logically assume the guess is valid,
+		}			// ie, Status == EGuessStatus::OK;
+	} while (Status != EGuessStatus::OK); 
 	return Guess;
 }
 

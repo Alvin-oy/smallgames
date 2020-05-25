@@ -22,7 +22,6 @@ enum class EGuessStatus {
 	Not_Isogram,
 	Wrong_Length,
 	Not_Alphabet
-	
 };
 
 class FBullCowGame {
@@ -42,7 +41,6 @@ public:
 	EGuessStatus CheckGuessValidity(FString) const;
 	void Reset();
 	FBullCowCount SubmitValidGuess(FString);
-	
 };
 
 
@@ -61,7 +59,8 @@ int32 FBullCowGame::GetMaxTries() const
 
 void FBullCowGame::Reset()
 {
-	const FString HIDDEN_WORD = "play"; 	//Isogram
+	//const FString HIDDEN_WORD = "play"; 	//Isogram
+	const FString HIDDEN_WORD = "unreal";
 	MyHiddenWord = HIDDEN_WORD;
 	
 	MyCurrentTry = 1;
@@ -99,29 +98,29 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 {
 	MyCurrentTry++;
-	FBullCowCount BullCowCount;
+	FBullCowCount Count;
 	int32 WordLength = MyHiddenWord.length(); // assuming same length as guess
 
 	for (int32 MHWCharIndex = 0; MHWCharIndex < WordLength; MHWCharIndex++) {
 		for (int32 GCharIndex = 0; GCharIndex < WordLength; GCharIndex++) {
 			if (Guess[GCharIndex] == MyHiddenWord[MHWCharIndex]) {
 				if (MHWCharIndex == GCharIndex) { // if they're in the same place
-					BullCowCount.Bulls++; // incriment bulls
+					Count.Bulls++; // count/incriment bulls
 				}
 				else {
-					BullCowCount.Cows++; // must be a cow
+					Count.Cows++; // must be a cow
 				}
 			}
 		}
 	}
-	if (BullCowCount.Bulls == WordLength) {
+	if (Count.Bulls == WordLength) {
 		bGameIsWon = true;
 	}
 	else //else block is redundant because bGameIsWon is initialized to be false
 	{
 		bGameIsWon = false;
 	}
-	return BullCowCount;
+	return Count;
 }
 
 
